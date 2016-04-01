@@ -3,4 +3,5 @@
  */
 public class testi {
     private int abrakadabra = 0;
+    private int vielkerran = 1;
 }
