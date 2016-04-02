@@ -1,39 +1,45 @@
 package model;
 
-/**
- * Created by valje on 2.4.2016.
- */
 
-public class User {
+
+public class User
+{
     private String name;
     private int score;
 
-    public User(String name) {
+
+
+    public User(String name)
+    {
         this.name = name;
         this.score = 0;         // näin oletan
     }
 
 
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
 
 
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
 
 
 
-    public int getScore() {
+    public int getScore()
+    {
         return score;
     }
 
 
 
-    public void setScore(int score) {
+    public void setScore(int score)
+    {
         this.score = score;
     }
 }

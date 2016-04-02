@@ -2,12 +2,12 @@ import lifeline.ILifeline;
 import mapper.IQuestionMapper;
 import mapper.IUserMapper;
 import model.User;
-
 import java.util.List;
 
 
 
-public class Game {
+public class Game
+{
     private int CurrentLevel, CurrentQuestion;
     private User player;
     private IQuestionMapper questions;
@@ -16,7 +16,8 @@ public class Game {
 
 
 
-    public Game(User player, IQuestionMapper questions, IUserMapper users, List<ILifeline> lifelines) {
+    public Game(User player, IQuestionMapper questions, IUserMapper users, List<ILifeline> lifelines)
+    {
         this.CurrentLevel = 1;
         this.player = player;
         this.questions = questions;
@@ -26,37 +27,43 @@ public class Game {
 
 
 
-    public int getCurrentLevel() {
+    public int getCurrentLevel()
+    {
         return CurrentLevel;
     }
 
 
 
-    public void setCurrentLevel(int currentLevel) {
+    public void setCurrentLevel(int currentLevel)
+    {
         CurrentLevel = currentLevel;
     }
 
 
 
-    public int getCurrentQuestion() {
+    public int getCurrentQuestion()
+    {
         return CurrentQuestion;
     }
 
 
 
-    public void setCurrentQuestion(int currentQuestion) {
+    public void setCurrentQuestion(int currentQuestion)
+    {
         CurrentQuestion = currentQuestion;
     }
 
 
 
-    public IQuestionMapper getQuestions() {
+    public IQuestionMapper getQuestions()
+    {
         return questions;
     }
 
 
 
-    public List<ILifeline> getLifelines() {
+    public List<ILifeline> getLifelines()
+    {
         return lifelines;
     }
 }
