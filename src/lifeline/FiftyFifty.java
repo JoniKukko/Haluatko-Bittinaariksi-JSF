@@ -6,7 +6,7 @@ import model.Question;
  * Created by valje on 2.4.2016.
  */
 
-public class FiftyFifty implements Lifeline {
+public class FiftyFifty implements ILifeline {
 
     // poistaa kaksi varmasti väärää vastausta ja tekee sen nyt
     public Question use(Question question) {

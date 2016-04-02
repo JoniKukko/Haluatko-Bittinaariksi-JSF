@@ -1,0 +1,14 @@
+package mapper;
+
+
+
+import model.User;
+import model.Users;
+
+
+
+public interface IUserMapper
+{
+    void saveUser(User user);
+    Users loadUsers();
+}

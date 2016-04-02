@@ -6,7 +6,7 @@ import model.Question;
  * Created by valje on 2.4.2016.
  */
 
-public class CallHome implements Lifeline {
+public class CallHome implements ILifeline {
 
     // ei tee mitään, ottaa vain jäljellä olevat vastausvaihtoehdot
     public Question use(Question question) {

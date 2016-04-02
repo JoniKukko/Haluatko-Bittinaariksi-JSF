@@ -6,7 +6,7 @@ import model.Question;
  * Created by valje on 2.4.2016.
  */
 
-public class AskTheAudience implements Lifeline {
+public class AskTheAudience implements ILifeline {
 
     // Ei tee mitään, ottaa vain jäljellä olevat vastausvaihtoehdot
     public Question use(Question question) {

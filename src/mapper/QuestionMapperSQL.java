@@ -1,20 +1,22 @@
 package mapper;
 
+
+
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 import model.Question;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
 
-public class QuestionMapper
+
+public class QuestionMapperSQL implements IQuestionMapper
 {
     private MysqlDataSource dataSource;
 
 
 
-    public QuestionMapper()
+    public QuestionMapperSQL()
     {
         this.dataSource = new MysqlDataSource();
         this.dataSource.setUser("HBJSF");

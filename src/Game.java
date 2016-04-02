@@ -1,24 +1,22 @@
-import lifeline.Lifeline;
-import mapper.QuestionMapper;
-import mapper.UserMapper;
+import lifeline.ILifeline;
+import mapper.IQuestionMapper;
+import mapper.IUserMapper;
 import model.User;
 
 import java.util.List;
 
-/**
- * Created by valje on 2.4.2016.
- */
+
 
 public class Game {
-    int CurrentLevel, CurrentQuestion;
-    User player;
-    QuestionMapper questions;
-    UserMapper users;
-    List<Lifeline> lifelines;                   // Pitäiskö tämä olla Lifelines-luokassa, kuten users?
+    private int CurrentLevel, CurrentQuestion;
+    private User player;
+    private IQuestionMapper questions;
+    private IUserMapper users;
+    private List<ILifeline> lifelines;                   // Pitäiskö tämä olla Lifelines-luokassa, kuten users?
 
 
 
-    public Game(User player, QuestionMapper questions, UserMapper users, List<Lifeline> lifelines) {
+    public Game(User player, IQuestionMapper questions, IUserMapper users, List<ILifeline> lifelines) {
         this.CurrentLevel = 1;
         this.player = player;
         this.questions = questions;
@@ -52,13 +50,13 @@ public class Game {
 
 
 
-    public QuestionMapper getQuestions() {
+    public IQuestionMapper getQuestions() {
         return questions;
     }
 
 
 
-    public List<Lifeline> getLifelines() {
+    public List<ILifeline> getLifelines() {
         return lifelines;
     }
 }

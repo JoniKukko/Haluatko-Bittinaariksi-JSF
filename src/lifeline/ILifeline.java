@@ -6,7 +6,7 @@ import model.Question;
  * Created by valje on 2.4.2016.
  */
 
-public interface Lifeline {
+public interface ILifeline {
 
     // tekee jotain ja palauttaa muokatun
     Question use(Question question);
