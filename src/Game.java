@@ -1,4 +1,5 @@
 import lifeline.ILifeline;
+import lifeline.ILifelines;
 import mapper.IQuestionMapper;
 import mapper.IUserMapper;
 import model.User;
@@ -12,11 +13,11 @@ public class Game
     private User player;
     private IQuestionMapper questions;
     private IUserMapper users;
-    private List<ILifeline> lifelines;                   // Pitäiskö tämä olla Lifelines-luokassa, kuten users?
+    private ILifelines lifelines;
 
 
 
-    public Game(User player, IQuestionMapper questions, IUserMapper users, List<ILifeline> lifelines)
+    public Game(User player, IQuestionMapper questions, IUserMapper users, ILifelines lifelines)
     {
         this.CurrentLevel = 1;
         this.player = player;
@@ -62,7 +63,7 @@ public class Game
 
 
 
-    public List<ILifeline> getLifelines()
+    public ILifelines getLifelines()
     {
         return lifelines;
     }
