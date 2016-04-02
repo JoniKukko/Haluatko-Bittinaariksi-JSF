@@ -2,6 +2,7 @@ package model;
 
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -18,6 +19,18 @@ public class Question
 
     public Question()
     {
+        this.answers = new ArrayList<Answer>();
+    }
+
+
+
+    public Question(int questionId, int correctAnswerId, String question, int level)
+    {
+        this.questionId = questionId;
+        this.correctAnswerId = correctAnswerId;
+        this.question = question;
+        this.level = level;
+        this.answers = new ArrayList<Answer>();
     }
 
 
@@ -106,5 +119,17 @@ public class Question
     public void addAnswer(Answer answer)
     {
         this.answers.add(answer);
+    }
+
+
+
+    public String toString()
+    {
+        return "Question [" +
+                "questionId: " + this.questionId + ", " +
+                "correctAnswerId: " + this.correctAnswerId + " , " +
+                "question: " + this.question + ", " +
+                "level: " + this.level + ", " +
+                "answers: " + this.answers.toString() + "]";
     }
 }
