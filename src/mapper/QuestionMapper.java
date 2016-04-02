@@ -1,15 +1,56 @@
 package mapper;
 
+import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 import model.Question;
 
-/**
- * Created by valje on 2.4.2016.
- */
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
-public class QuestionMapper {
 
-    public Question getQuestionByLevel(int level) {
-        Question question = null;       // placeholder
-        return question;
+public class QuestionMapper
+{
+    private MysqlDataSource dataSource;
+
+
+
+    public QuestionMapper()
+    {
+        this.dataSource = new MysqlDataSource();
+        this.dataSource.setUser("HBJSF");
+        this.dataSource.setPassword("HBJSF");
+        this.dataSource.setServerName("localhost");
+        this.dataSource.setDatabaseName("HBJSF");
+    }
+
+
+
+    public Question getRandomQuestionByLevel(int level)
+    {
+        Question newQuestion = new Question();
+
+        try
+        {
+            Connection conn = this.dataSource.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM question");
+
+
+
+            while (rs.next()) {
+                System.out.println(rs.getString(3));
+            }
+
+
+            rs.close();
+            stmt.close();
+            conn.close();
+        }
+        catch (Exception ex)
+        {
+            System.out.println("VIRHE " + ex.getMessage());
+        }
+
+        return newQuestion;
     }
 }
