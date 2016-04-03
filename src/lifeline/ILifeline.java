@@ -8,9 +8,9 @@ import model.Question;
 
 public interface ILifeline
 {
-    // tekee jotain ja palauttaa muokatun
-    Question use(Question question);
+    // palauttaa mahdollisesti muokatun version kysymyksestä
+    Question getQuestion();
 
     // palauttaa jotain mitä näytetään sitten sivulla
-    String result();
+    String getResult();
 }
