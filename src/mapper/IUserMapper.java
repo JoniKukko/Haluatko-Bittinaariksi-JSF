@@ -13,4 +13,6 @@ public interface IUserMapper
     Users loadUsers();
 
     Users getRepository();
+
+    void saveUsers();
 }

@@ -12,8 +12,10 @@ public class UserMapperFileTest {
     {
         IUserMapper userMapper = new UserMapperFile();
 
-        System.out.println(userMapper.getRepository().getUsers().get(0).getName() + " : " + userMapper.getRepository().getUsers().get(0).getScore());
-        System.out.println(userMapper.getRepository().getUsers().get(1).getName() + " : " + userMapper.getRepository().getUsers().get(1).getScore());
+        for (int i = 0; i < userMapper.getRepository().getUsers().size(); i++)
+        {
+            System.out.println(userMapper.getRepository().getUsers().get(i).getName() + " : " + userMapper.getRepository().getUsers().get(i).getScore());
+        }
 
         assertNotEquals(null, userMapper.getRepository());
     }

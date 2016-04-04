@@ -1,11 +1,1 @@
-{ "Scoreboard" : [
-    {
-      "Name": "Jaakko",
-      "Score": "5000"
-    },
-    {
-      "Name" : "Ukko",
-      "Score" : "200"
-    }
-  ]
-}
+{"Scoreboard":[{"Score":5000,"Name":"Jaakko"},{"Score":200,"Name":"Ukko"},{"Score":300,"Name":"Matti"}]}

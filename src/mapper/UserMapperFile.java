@@ -8,6 +8,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -68,10 +69,39 @@ public class UserMapperFile implements IUserMapper
     }
 
 
-
+    // Tässä kirjoitetaan tiedostoon.
     public void saveUsers()
     {
-        // Tässä kirjoitetaan tiedostoon.
+        // Luodaan repositorysta JSON-objekti
+        JSONObject scoreboard = new JSONObject();
+        JSONArray jsonArray = new JSONArray();
+
+        for (int i = 0; i < this.repository.getUsers().size(); i++)
+        {
+            JSONObject userInJson = new JSONObject();
+            userInJson.put("Name", this.repository.getUsers().get(i).getName());
+            userInJson.put("Score", this.repository.getUsers().get(i).getScore());
+
+            jsonArray.add(userInJson);
+        }
+
+        scoreboard.put("Scoreboard", jsonArray);
+
+
+
+        // Kirjoitetaan yllä luotu objekti tiedostoon
+
+        try
+        {
+            FileWriter file = new FileWriter("src/data/score.json");
+
+            file.write(scoreboard.toJSONString());
+
+            file.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
