@@ -2,6 +2,7 @@ import lifeline.ILifeline;
 import lifeline.ILifelines;
 import mapper.IQuestionMapper;
 import mapper.IUserMapper;
+import model.Question;
 import model.User;
 import java.util.List;
 
@@ -9,7 +10,8 @@ import java.util.List;
 
 public class Game
 {
-    private int CurrentLevel, CurrentQuestion;
+    private int CurrentLevel;
+    private Question CurrentQuestion;
     private User player;
     private IQuestionMapper questions;
     private IUserMapper users;
@@ -24,6 +26,8 @@ public class Game
         this.questions = questions;
         this.users = users;
         this.lifelines = lifelines;
+
+        this.updateCurrentQuestion();
     }
 
 
@@ -35,6 +39,20 @@ public class Game
 
 
 
+    public boolean checkAnswer(int answerId)
+    {
+        boolean flag = (this.CurrentQuestion.getCorrectAnswerId() == answerId);
+
+        if (flag) {
+            this.CurrentLevel++;
+            updateCurrentQuestion();
+        }
+
+        return flag;
+    }
+
+
+
     public void setCurrentLevel(int currentLevel)
     {
         CurrentLevel = currentLevel;
@@ -42,14 +60,21 @@ public class Game
 
 
 
-    public int getCurrentQuestion()
+    private void updateCurrentQuestion()
+    {
+        this.CurrentQuestion = this.questions.getRandomQuestionByLevel(this.CurrentLevel);
+    }
+
+
+
+    public Question getCurrentQuestion()
     {
         return CurrentQuestion;
     }
 
 
 
-    public void setCurrentQuestion(int currentQuestion)
+    public void setCurrentQuestion(Question currentQuestion)
     {
         CurrentQuestion = currentQuestion;
     }
@@ -66,5 +91,9 @@ public class Game
     public ILifelines getLifelines()
     {
         return lifelines;
+    }
+
+    public User getPlayer() {
+        return player;
     }
 }

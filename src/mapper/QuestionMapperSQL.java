@@ -17,7 +17,7 @@ public class QuestionMapperSQL implements IQuestionMapper
 
 
 
-    public QuestionMapperSQL() throws Exception
+    public QuestionMapperSQL()
     {
         this.dataSource = new MysqlDataSource();
         this.dataSource.setUser("HBJSF");

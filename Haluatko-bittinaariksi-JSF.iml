@@ -71,6 +71,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="Arquillian JUnit:Release" level="project" />
-    <orderEntry type="library" exported="" name="org.apache.clerezza.ext:org.json.simple:0.4" level="project" />
+    <orderEntry type="library" name="json-simple-1.1.1" level="project" />
   </component>
 </module>

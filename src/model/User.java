@@ -3,13 +3,14 @@ package model;
 
 
 import javax.faces.bean.ManagedBean;
-
+import javax.validation.constraints.Size;
 
 
 @ManagedBean
 public class User
 {
-    private String name = null;
+    @Size(min=1, max=40)
+    private String name;
     private int score = 0;
 
 
