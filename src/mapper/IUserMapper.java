@@ -11,4 +11,6 @@ public interface IUserMapper
 {
     void saveUser(User user);
     Users loadUsers();
+
+    Users getRepository();
 }

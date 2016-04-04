@@ -1,0 +1,11 @@
+{ "Scoreboard" : [
+    {
+      "Name": "Jaakko",
+      "Score": "5000"
+    },
+    {
+      "Name" : "Ukko",
+      "Score" : "200"
+    }
+  ]
+}
