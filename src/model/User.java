@@ -2,17 +2,27 @@ package model;
 
 
 
+import javax.faces.bean.ManagedBean;
+
+
+
+@ManagedBean
 public class User
 {
-    private String name;
-    private int score;
+    private String name = null;
+    private int score = 0;
+
+
+
+    public User()
+    {
+    }
 
 
 
     public User(String name)
     {
         this.name = name;
-        this.score = 0;         // näin oletan
     }
 
 

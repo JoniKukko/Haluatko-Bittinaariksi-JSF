@@ -71,14 +71,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="Arquillian JUnit:Release" level="project" />
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/json-simple-1.1.1.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
+    <orderEntry type="library" exported="" name="org.apache.clerezza.ext:org.json.simple:0.4" level="project" />
   </component>
 </module>
