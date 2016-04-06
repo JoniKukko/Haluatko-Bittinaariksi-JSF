@@ -72,5 +72,6 @@
     </orderEntry>
     <orderEntry type="library" name="Arquillian JUnit:Release" level="project" />
     <orderEntry type="library" name="json-simple-1.1.1" level="project" />
+    <orderEntry type="library" name="javax.validation:validation-api:1.1.0.Final" level="project" />
   </component>
 </module>
