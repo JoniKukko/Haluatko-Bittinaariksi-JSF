@@ -1,9 +1,9 @@
 package lifeline;
 
 
-
 import model.Answer;
 import model.Question;
+
 import java.util.*;
 
 

@@ -1,13 +1,15 @@
 package tests;
 
 
-
 import lifeline.AskTheAudience;
 import lifeline.ILifeline;
 import model.Answer;
 import model.Question;
-import org.junit.*;
-import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 
 

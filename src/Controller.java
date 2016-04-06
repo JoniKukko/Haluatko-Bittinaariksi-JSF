@@ -1,7 +1,6 @@
 import lifeline.Lifelines;
 import mapper.IUserMapper;
 import mapper.QuestionMapperSQL;
-import mapper.UserMapperFile;
 import model.Answer;
 import model.User;
 import model.Users;

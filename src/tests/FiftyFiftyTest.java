@@ -1,14 +1,16 @@
 package tests;
 
 
-
 import lifeline.FiftyFifty;
 import lifeline.ILifeline;
 import model.Answer;
 import model.Question;
-import org.junit.*;
+import org.junit.Before;
+import org.junit.Test;
+
 import java.util.List;
-import static org.junit.Assert.*;
+
+import static org.junit.Assert.assertEquals;
 
 
 

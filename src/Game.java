@@ -1,10 +1,8 @@
-import lifeline.ILifeline;
 import lifeline.ILifelines;
 import mapper.IQuestionMapper;
 import mapper.IUserMapper;
 import model.Question;
 import model.User;
-import java.util.List;
 
 
 
