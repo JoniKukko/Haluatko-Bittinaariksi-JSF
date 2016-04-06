@@ -5,7 +5,7 @@ package model;
 import javax.faces.bean.ManagedBean;
 import javax.validation.constraints.Size;
 
-
+// Korjattu!
 
 @ManagedBean
 public class User
