@@ -1,12 +1,12 @@
 package tests;
 
 
-
-import org.junit.Test;
-import static org.junit.Assert.*;
 import mapper.IQuestionMapper;
 import mapper.QuestionMapperSQL;
 import model.Question;
+import org.junit.Test;
+
+import static org.junit.Assert.assertNotEquals;
 
 
 

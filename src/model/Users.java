@@ -1,8 +1,6 @@
 package model;
 
 
-
-import javax.annotation.ManagedBean;
 import java.util.List;
 
 

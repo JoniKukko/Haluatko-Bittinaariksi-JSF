@@ -6,6 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.validation.constraints.Size;
 
 
+
 @ManagedBean
 public class User
 {
