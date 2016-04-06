@@ -13,7 +13,7 @@ import java.util.Iterator;
 import java.util.List;
 
 
-@SuppressWarnings("unchecked")
+
 public class UserMapperFile implements IUserMapper
 {
     private Users repository;                       // Tämä ilmeisesti yleensä Javassa DAO vaan? Repo on vähä C-sharppia, mut iha sama.
