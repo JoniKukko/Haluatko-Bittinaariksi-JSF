@@ -1,7 +1,6 @@
 import lifeline.Lifelines;
 import mapper.IUserMapper;
 import mapper.QuestionMapperSQL;
-import mapper.UserMapperFile;
 import model.Answer;
 import model.User;
 import model.Users;
@@ -45,7 +44,7 @@ public class Controller implements java.io.Serializable
         FacesContext facesContext = FacesContext.getCurrentInstance();
         User player = (User)facesContext.getExternalContext().getRequestMap().get("user");
 
-        this.engine = new Game(player, new QuestionMapperSQL(), new UserMapperFile(), new Lifelines());
+        this.engine = new Game(player, new QuestionMapperSQL(), new temp(), new Lifelines());
 
         return "question?faces-redirect=true";
     }
