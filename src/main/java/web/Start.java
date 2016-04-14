@@ -1,4 +1,4 @@
-package UI;
+package web;
 
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
