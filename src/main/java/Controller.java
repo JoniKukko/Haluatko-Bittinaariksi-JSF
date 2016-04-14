@@ -1,5 +1,5 @@
 import lifeline.Lifelines;
-import mapper.QuestionMapperSQL;
+//import mapper.QuestionMapperSQL;
 import model.Answer;
 import model.User;
 
@@ -7,14 +7,14 @@ import java.util.List;
 
 
 
-@ManagedBean
-@SessionScoped
+//@ManagedBean
+//@SessionScoped
 public class Controller implements java.io.Serializable
 {
     private Game engine;
 
 
-
+/**
     public String newGame()
     {
         FacesContext facesContext = FacesContext.getCurrentInstance();
@@ -24,7 +24,7 @@ public class Controller implements java.io.Serializable
 
         return "question?faces-redirect=true";
     }
-
+**/
 
     public String answer(int answerId)
     {

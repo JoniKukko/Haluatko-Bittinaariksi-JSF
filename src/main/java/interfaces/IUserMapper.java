@@ -4,6 +4,8 @@ package interfaces;
 import model.User;
 import model.Users;
 
+import java.io.IOException;
+
 public interface IUserMapper
 {
     void saveUser(User user);
@@ -11,5 +13,5 @@ public interface IUserMapper
 
     Users getRepository();
 
-    void saveUsers();
+    void saveUsers() throws IOException;
 }

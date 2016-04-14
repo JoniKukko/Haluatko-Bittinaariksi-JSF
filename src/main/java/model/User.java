@@ -1,10 +1,10 @@
 package model;
 
-import javax.faces.bean.ManagedBean;
+//import javax.faces.bean.ManagedBean;
 import javax.validation.constraints.Size;
 
 
-@ManagedBean
+//@ManagedBean
 public class User
 {
     @Size(min=1, max=40)

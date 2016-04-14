@@ -4,12 +4,9 @@ import interfaces.IUserMapper;
 import model.User;
 import model.Users;
 
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.*;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-
 
 
 public class UserMapperFile implements IUserMapper
@@ -35,70 +32,47 @@ public class UserMapperFile implements IUserMapper
     // Lukee score.json-tiedoston ja hakee sieltä tallennetut pelitulokset
     public Users loadUsers()
     {
-        JSONParser parser = new JSONParser();
-
         Users users = new Users();
+        List<User> userList = new ArrayList<User>();
 
-        try {
-
-            Object obj = parser.parse(new FileReader("src/data/score.json"));
-
-            JSONObject jsonObject = (JSONObject) obj;
-
-            List<User> userList = new ArrayList<User>();
-
-            JSONArray scoreboard = (JSONArray) jsonObject.get("Scoreboard");
-            Iterator i = scoreboard.iterator();
-
-            while (i.hasNext())
-            {
-                JSONObject user = (JSONObject) i.next();
-                userList.add(new User(user.get("Name").toString(), Integer.parseInt(user.get("Score").toString())));
+        try{
+            // Open the file
+            FileInputStream fstream = new FileInputStream("src/data/score.txt");
+            // Get the object of DataInputStream
+            DataInputStream in = new DataInputStream(fstream);
+            BufferedReader br = new BufferedReader(new InputStreamReader(in));
+            String strLine;
+            //Read File Line By Line
+            while ((strLine = br.readLine()) != null)   {
+                // split the line on your splitter(s)
+                String[] splitted = strLine.split("|"); // here - is used as the delimiter
+                userList.add(new User(splitted[0], Integer.parseInt(splitted[1])));
             }
 
             users = new Users(userList);
 
-        } catch (Exception e) {
-            e.printStackTrace();
+            //Close the input stream
+            in.close();
+        }catch (Exception e){//Catch exception if any
+            System.err.println("Error: " + e.getMessage());
         }
 
         return users;
+
     }
 
 
     // Tässä kirjoitetaan tiedostoon.
-    public void saveUsers()
+    public void saveUsers() throws IOException
     {
-        // Luodaan repositorysta JSON-objekti
-        JSONObject scoreboard = new JSONObject();
-        JSONArray jsonArray = new JSONArray();
+        FileWriter fw = new FileWriter("src/data/score.txt");
 
-        for (int i = 0; i < this.repository.getUsers().size(); i++)
-        {
-            JSONObject userInJson = new JSONObject();
-            userInJson.put("Name", this.repository.getUsers().get(i).getName());
-            userInJson.put("Score", this.repository.getUsers().get(i).getScore());
-
-            jsonArray.add(userInJson);
+        for (int i = 0; i < this.repository.getUsers().size(); i++) {
+            fw.write(this.repository.getUsers().get(i).getName() + "|" + this.repository.getUsers().get(i).getScore());
         }
 
-        scoreboard.put("Scoreboard", jsonArray);
+        fw.close();
 
-
-
-        // Kirjoitetaan yllä luotu objekti tiedostoon
-
-        try
-        {
-            FileWriter file = new FileWriter("src/data/score.json");
-
-            file.write(scoreboard.toJSONString());
-
-            file.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
 

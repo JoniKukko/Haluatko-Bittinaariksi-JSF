@@ -9,7 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 
-
+/**
 public class QuestionMapperSQL implements IQuestionMapper
 {
     private MysqlDataSource dataSource;
@@ -105,3 +105,4 @@ public class QuestionMapperSQL implements IQuestionMapper
         return question;
     }
 }
+ **/
