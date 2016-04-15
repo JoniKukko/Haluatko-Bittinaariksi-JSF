@@ -6,6 +6,8 @@ import model.User;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.File;
+
 import static org.junit.Assert.assertNotEquals;
 
 
@@ -19,7 +21,9 @@ public class UserMapperFileTest {
     @Before
     public void setUp() throws Exception
     {
-        this.userMapper = new UserMapperFile();
+        String filename = "score.txt";
+        File file = new File(getClass().getClassLoader().getResource(filename).getFile());
+        this.userMapper = new UserMapperFile(file);
     }
 
 
@@ -28,12 +32,12 @@ public class UserMapperFileTest {
     public void getScores() throws Exception
     {
 
-        for (int i = 0; i < this.userMapper.getRepository().getUsers().size(); i++)
+        for (User user : this.userMapper.getRepository().getUsers())
         {
-            System.out.println(this.userMapper.getRepository().getUsers().get(i).getName() + " : " + userMapper.getRepository().getUsers().get(i).getScore());
+            System.out.println(user.getName() + " : " + user.getScore());
         }
 
-        assertNotEquals(null, this.userMapper.getRepository());
+        assertNotEquals(null, this.userMapper.getRepository().getUsers());
     }
 
 
@@ -44,6 +48,7 @@ public class UserMapperFileTest {
         // Lisätään yks uus käyttäjä.
         // Vaihda näitä mielellään kun ajat testin niin tulee uusia rivejä eikä samoja.
         this.userMapper.saveUser(new User("Minna", 100));
+        this.userMapper.saveUser(new User("Manu", 300));
 
         this.userMapper.saveUsers();
 

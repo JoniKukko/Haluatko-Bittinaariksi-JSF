@@ -4,25 +4,24 @@ import interfaces.IQuestionMapper;
 import model.Answer;
 import model.Question;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 
 
-/**
+
 public class QuestionMapperSQL implements IQuestionMapper
 {
-    private MysqlDataSource dataSource;
+    private Connection conn;
 
 
 
     public QuestionMapperSQL()
     {
-        this.dataSource = new MysqlDataSource();
-        this.dataSource.setUser("HBJSF");
-        this.dataSource.setPassword("HBJSF");
-        this.dataSource.setServerName("localhost");
-        this.dataSource.setDatabaseName("HBJSF");
+        try {
+            this.conn = DriverManager.getConnection("jdbc:mysql://localhost/HBJSF", "HBJSF", "HBJSF");
+        } catch (SQLException ex)
+        {
+            System.out.println("SQLEXception " + ex.getMessage());
+        }
     }
 
 
@@ -41,13 +40,11 @@ public class QuestionMapperSQL implements IQuestionMapper
         // alustukset
         String queryString = "SELECT * FROM question WHERE level = ? ORDER BY RAND() LIMIT 1";
         Question newQuestion = null;
-        Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
         try {
             // haetaan yhteys ja suoritetaan kysely
-            conn = this.dataSource.getConnection();
             stmt = conn.prepareStatement(queryString);
             stmt.setInt(1, level);
             rs = stmt.executeQuery();
@@ -64,7 +61,6 @@ public class QuestionMapperSQL implements IQuestionMapper
         } finally {
             try { if (rs != null) rs.close(); } catch (Exception e) {}
             try { if (stmt != null) stmt.close(); } catch (Exception e) {}
-            try { if (conn != null) conn.close(); } catch (Exception e) {}
         }
 
         return newQuestion;
@@ -76,13 +72,11 @@ public class QuestionMapperSQL implements IQuestionMapper
     {
         // alustukset
         String queryString = "SELECT * FROM answer WHERE QuestionId = ?";
-        Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
         try {
             // haetaan yhteys ja suoritetaan kysely
-            conn = this.dataSource.getConnection();
             stmt = conn.prepareStatement(queryString);
             stmt.setInt(1, question.getQuestionId());
             rs = stmt.executeQuery();
@@ -99,10 +93,9 @@ public class QuestionMapperSQL implements IQuestionMapper
         } finally {
             try { if (rs != null) rs.close(); } catch (Exception e) {}
             try { if (stmt != null) stmt.close(); } catch (Exception e) {}
-            try { if (conn != null) conn.close(); } catch (Exception e) {}
         }
 
         return question;
     }
 }
- **/
+
