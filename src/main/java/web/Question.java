@@ -1,33 +1,22 @@
 package web;
 
 
-import com.vaadin.ui.Button;
-import com.vaadin.ui.Layout;
-import com.vaadin.ui.TextField;
-import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.*;
 
 
-public final class Start
-{
-
-    protected static Controller controller;
+public class Question {
 
 
     public static Layout init(Controller controller)
     {
-        Start.controller = controller;
-
         VerticalLayout layout = new VerticalLayout();
-
-        final TextField nameInput = new TextField("Anna nimesi");
-        layout.addComponent(nameInput);
+        layout.addComponent(new Label("Tämä on question"));
 
         Button button = new Button("Do not press this button");
 
-
         button.addClickListener(new Button.ClickListener() {
             public void buttonClick(Button.ClickEvent event) {
-                Start.controller.NewPlayer( nameInput.getValue() );
+                Notification.show("Do not press this button again");
             }
         });
 
@@ -35,6 +24,5 @@ public final class Start
 
         return layout;
     }
-
 
 }

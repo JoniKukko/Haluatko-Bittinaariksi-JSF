@@ -1,31 +1,34 @@
+package model;
+
+import interfaces.IBitLevelMapper;
 import interfaces.ILifelines;
 import interfaces.IQuestionMapper;
 import interfaces.IUserMapper;
-import model.Question;
-import model.User;
 
 
 
 public class Game
 {
+    private Status status;
     private int CurrentLevel;
     private Question CurrentQuestion;
     private User player;
     private IQuestionMapper questions;
     private IUserMapper users;
+    private IBitLevelMapper bitlevels;
     private ILifelines lifelines;
 
 
 
-    public Game(User player, IQuestionMapper questions, IUserMapper users, ILifelines lifelines)
+    public Game(IQuestionMapper questions, IUserMapper users, IBitLevelMapper bitlevels, ILifelines lifelines)
     {
+        this.status = Status.START;
         this.CurrentLevel = 1;
-        this.player = player;
+
         this.questions = questions;
         this.users = users;
+        this.bitlevels = bitlevels;
         this.lifelines = lifelines;
-
-        this.updateCurrentQuestion();
     }
 
 
@@ -93,5 +96,14 @@ public class Game
 
     public User getPlayer() {
         return player;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setPlayer(User player) {
+        this.player = player;
+        this.status = Status.QUESTION;
     }
 }

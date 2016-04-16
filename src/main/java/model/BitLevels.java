@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -13,6 +14,7 @@ public class BitLevels implements Iterable<BitLevel>{
 
     public BitLevels()
     {
+        this.bitLevels = new ArrayList<BitLevel>();
     }
 
 
@@ -47,6 +49,7 @@ public class BitLevels implements Iterable<BitLevel>{
         }
 
         return null;        // Vai mitä tän pitäis antaa jos on virheellinen level kysytty?
+                            // exception
     }
 
 
