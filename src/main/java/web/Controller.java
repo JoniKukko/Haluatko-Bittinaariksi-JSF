@@ -1,9 +1,6 @@
 package web;
 
-import com.vaadin.annotations.VaadinServletConfiguration;
-import com.vaadin.server.VaadinRequest;
-import com.vaadin.server.VaadinServlet;
-import com.vaadin.ui.UI;
+
 import lifeline.Lifelines;
 import mapper.BitLevelMapperManaged;
 import mapper.QuestionMapperSQL;
@@ -15,34 +12,17 @@ import javax.servlet.annotation.WebServlet;
 import java.io.File;
 
 
-public class Controller extends UI
+public class Controller
 {
 
-    private static Game engine = null;
+    private static Game engine;
 
 
-
-    @Override
-    public void init(VaadinRequest request)
+    public Controller()
     {
         if (Controller.engine == null)
             this.CreateEngine();
-
-        switch (Controller.engine.getStatus())
-        {
-            case START:
-                setContent(Start.init(this));
-                break;
-            case QUESTION:
-                setContent(Question.init(this));
-                break;
-            case END:
-                setContent(End.init(this));
-                break;
-        }
     }
-
-
 
     private void CreateEngine()
     {
@@ -63,14 +43,8 @@ public class Controller extends UI
 
     public void NewPlayer(String name)
     {
+
         Controller.engine.setPlayer( new User(name) );
     }
 
-
-
-
-    @WebServlet(urlPatterns = "/*", name = "BittiServlet", asyncSupported = true)
-    @VaadinServletConfiguration(ui = Controller.class, productionMode = false)
-    public static class MyUIServlet extends VaadinServlet {
-    }
 }

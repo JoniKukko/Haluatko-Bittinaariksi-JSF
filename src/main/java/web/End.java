@@ -1,26 +1,31 @@
 package web;
 
 
+import com.vaadin.annotations.VaadinServletConfiguration;
+import com.vaadin.server.VaadinRequest;
+import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.*;
 
+import javax.servlet.annotation.WebServlet;
 
-public class End
+
+public class End extends UI
 {
-    public static Layout init(Controller controller)
-    {
+
+
+    @Override
+    protected void init(VaadinRequest vaadinRequest) {
+
         VerticalLayout layout = new VerticalLayout();
-        layout.addComponent(new Label("Tämä on ENd"));
 
-        Button button = new Button("Do not press this button");
+        Label label = new Label("Terve, end");
 
-        button.addClickListener(new Button.ClickListener() {
-            public void buttonClick(Button.ClickEvent event) {
-                Notification.show("Do not press this button again");
-            }
-        });
-
-        layout.addComponent(button);
-        return layout;
+        layout.addComponent(label);
+        setContent(layout);
     }
 
+
+    @WebServlet(urlPatterns = {"/end/*", "/VAADIN/*"}, asyncSupported = true)
+    @VaadinServletConfiguration(ui = End.class, productionMode = false)
+    public static class EndServlet extends VaadinServlet {}
 }

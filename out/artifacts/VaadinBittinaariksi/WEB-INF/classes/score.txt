@@ -1,9 +1,1 @@
 Heikki|14
-Minna|100
-Manu|300
-Minna|100
-Manu|300
-Minna|100
-Manu|300
-Minna|100
-Manu|300

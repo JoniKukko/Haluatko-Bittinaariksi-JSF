@@ -1,21 +1,20 @@
 package web;
 
 
-import com.vaadin.ui.Button;
-import com.vaadin.ui.Layout;
-import com.vaadin.ui.TextField;
-import com.vaadin.ui.VerticalLayout;
+import com.vaadin.annotations.VaadinServletConfiguration;
+import com.vaadin.server.VaadinRequest;
+import com.vaadin.server.VaadinServlet;
+import com.vaadin.ui.*;
+
+import javax.servlet.annotation.WebServlet;
 
 
-public final class Start
+public class Start extends UI
 {
 
-    protected static Controller controller;
 
-
-    public static Layout init(Controller controller)
-    {
-        Start.controller = controller;
+    @Override
+    protected void init(VaadinRequest vaadinRequest) {
 
         VerticalLayout layout = new VerticalLayout();
 
@@ -27,14 +26,16 @@ public final class Start
 
         button.addClickListener(new Button.ClickListener() {
             public void buttonClick(Button.ClickEvent event) {
-                Start.controller.NewPlayer( nameInput.getValue() );
+                Notification.show( nameInput.getValue() );
             }
         });
 
         layout.addComponent(button);
-
-        return layout;
+        setContent(layout);
     }
 
 
+    @WebServlet(urlPatterns = {"/start/*", "/VAADIN/*"}, asyncSupported = true)
+    @VaadinServletConfiguration(ui = Start.class, productionMode = false)
+    public static class StartServlet extends VaadinServlet {}
 }
