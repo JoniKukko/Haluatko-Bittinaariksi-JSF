@@ -30,7 +30,8 @@ public class FiftyFiftyTest
         question.addAnswer( new Answer(3, 1, "Vastaus 3") );
         question.addAnswer( new Answer(4, 1, "Vastaus 4") );
 
-        this.lifeline = new FiftyFifty(question);
+        this.lifeline = new FiftyFifty();
+        this.lifeline.useLifeline(question);
     }
 
 

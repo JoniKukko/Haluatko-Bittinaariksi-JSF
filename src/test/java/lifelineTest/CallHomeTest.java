@@ -30,7 +30,8 @@ public class CallHomeTest
         this.question.addAnswer( new Answer(3, 1, "Vastaus 3") );
         this.question.addAnswer( new Answer(4, 1, "Vastaus 4") );
 
-        this.lifeline = new CallHome(this.question);
+        this.lifeline = new CallHome();
+        this.lifeline.useLifeline(this.question);
     }
 
 

@@ -30,7 +30,8 @@ public class AskTheAudienceTest
         this.question.addAnswer( new Answer(3, 1, "Possu") );
         this.question.addAnswer( new Answer(4, 1, "Valtteri") );
 
-        this.lifeline = new AskTheAudience(this.question);
+        this.lifeline = new AskTheAudience();
+        this.lifeline.useLifeline(this.question);
     }
 
 

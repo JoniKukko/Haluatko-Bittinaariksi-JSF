@@ -46,4 +46,10 @@ public class Lifelines implements ILifelines
     {
         this.lifelines.add(lifeline);
     }
+
+
+    public void removeLifeline(ILifeline lifeline)
+    {
+        this.lifelines.remove(lifeline);
+    }
 }

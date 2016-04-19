@@ -8,24 +8,12 @@ import java.util.*;
 
 
 
+// Palauttaa stringinä vastausvaihtoehdot ja prosentit tyyliin A: 40 %, C: 20 %
 public class AskTheAudience implements ILifeline
 {
     private Question question;
     private String result;
     private int correctAnswerStartingPercentage;
-
-
-
-    // Palauttaa stringinä vastausvaihtoehdot ja prosentit tyyliin A: 40 %, C: 20 %
-    public AskTheAudience(Question question)
-    {
-        // alustukset
-        this.question = question;
-        this.correctAnswerStartingPercentage = 30;
-
-        // käsittely
-        this.setResult();
-    }
 
 
 
@@ -84,6 +72,18 @@ public class AskTheAudience implements ILifeline
 
 
 
+    public void useLifeline(Question question)
+    {
+        // alustukset
+        this.question = question;
+        this.correctAnswerStartingPercentage = 30;
+
+        // käsittely
+        this.setResult();
+    }
+
+
+
     public Question getQuestion()
     {
         return question;
@@ -95,4 +95,8 @@ public class AskTheAudience implements ILifeline
     {
         return result;
     }
+
+
+
+    public String getName() { return "Ask the Audience"; }
 }

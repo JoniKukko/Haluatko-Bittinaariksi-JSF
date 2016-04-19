@@ -28,6 +28,11 @@ public class UserMapperFile implements IUserMapper
     {
         // Lisätään vain uusi käyttäjä repositorioon, EI VIELÄ TIEDOSTOON
         this.repository.addUser(user);
+        try {
+            this.saveUsers();
+        }catch (Exception ex)
+        {
+        }
     }
 
 

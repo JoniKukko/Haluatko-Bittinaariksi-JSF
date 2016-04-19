@@ -9,23 +9,11 @@ import java.util.Random;
 
 
 
+// poistaa kaksi varmasti väärää vastausta ja tekee sen nyt
 public class FiftyFifty implements ILifeline
 {
     private Question question;
     private String result;
-
-
-
-    // poistaa kaksi varmasti väärää vastausta ja tekee sen nyt
-    public FiftyFifty(Question question)
-    {
-        // alustukset
-        this.question = question;
-        this.result = null;
-
-        // käsittely
-        this.removeTwoWrongAnswers();
-    }
 
 
 
@@ -47,6 +35,20 @@ public class FiftyFifty implements ILifeline
 
         // päivitetään vastaukset
         this.question.setAnswers(answers);
+
+        this.result = "Poistin juuri kaksi varmasti väärää vastausta..";
+    }
+
+
+
+    public void useLifeline(Question question)
+    {
+        // alustukset
+        this.question = question;
+        this.result = null;
+
+        // käsittely
+        this.removeTwoWrongAnswers();
     }
 
 
@@ -62,4 +64,8 @@ public class FiftyFifty implements ILifeline
     {
         return result;
     }
+
+
+
+    public String getName() { return "Fifty-Fifty"; }
 }

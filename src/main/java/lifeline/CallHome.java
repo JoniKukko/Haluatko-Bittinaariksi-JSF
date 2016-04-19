@@ -19,30 +19,6 @@ public class CallHome implements ILifeline
 
 
 
-    public CallHome(Question question)
-    {
-        // alustukset
-        this.question = question;
-
-        // millä todennäköisyydellä "vastaaja" tietää oikean vastauksen
-        this.odds = 70;
-
-        // TODO: 3.4.2016  Oisko nämä stringit parempi jossain tiedostossa?
-        // "vastaajan" vastauksia
-        this.resultStrings = new ArrayList<String>();
-        this.resultStrings.add("Hmm, luulen että se voisi olla '%s'..");
-        this.resultStrings.add("No tää on varma! Se on '%s'.");
-        this.resultStrings.add("Ehdottomasti ehkä '%s'.");
-        this.resultStrings.add("En tiedä, mutta jos jotain pitää sanoa niin valitsisin '%s'.");
-        this.resultStrings.add("Aapuuaa ehkä '%s'?");
-        this.resultStrings.add("MITÄ SÄ MULLE SOITTELET!?!");
-
-        // käsittely
-        this.setResult();
-    }
-
-
-
     private void setResult()
     {
         Random random = new Random();
@@ -68,6 +44,30 @@ public class CallHome implements ILifeline
 
 
 
+    public void useLifeline(Question question)
+    {
+        // alustukset
+        this.question = question;
+
+        // millä todennäköisyydellä "vastaaja" tietää oikean vastauksen
+        this.odds = 70;
+
+        // TODO: 3.4.2016  Oisko nämä stringit parempi jossain tiedostossa?
+        // "vastaajan" vastauksia
+        this.resultStrings = new ArrayList<String>();
+        this.resultStrings.add("Hmm, luulen että se voisi olla '%s'..");
+        this.resultStrings.add("No tää on varma! Se on '%s'.");
+        this.resultStrings.add("Ehdottomasti ehkä '%s'.");
+        this.resultStrings.add("En tiedä, mutta jos jotain pitää sanoa niin valitsisin '%s'.");
+        this.resultStrings.add("Aapuuaa ehkä '%s'?");
+        this.resultStrings.add("MITÄ SÄ MULLE SOITTELET!?!");
+
+        // käsittely
+        this.setResult();
+    }
+
+
+
     public Question getQuestion()
     {
         return question;
@@ -79,4 +79,8 @@ public class CallHome implements ILifeline
     {
         return result;
     }
+
+
+
+    public String getName() { return "Call home"; }
 }

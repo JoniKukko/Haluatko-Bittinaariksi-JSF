@@ -22,13 +22,53 @@ public class Game
 
     public Game(IQuestionMapper questions, IUserMapper users, IBitLevelMapper bitlevels, ILifelines lifelines)
     {
-        this.status = Status.START;
-        this.CurrentLevel = 1;
+        this.newGame();
 
         this.questions = questions;
         this.users = users;
         this.bitlevels = bitlevels;
         this.lifelines = lifelines;
+
+        this.updateCurrentQuestion();
+    }
+
+
+
+    public void newGame()
+    {
+        this.status = Status.START;
+        this.CurrentLevel = 1;
+    }
+
+
+
+    public void checkAnswer(int answerId)
+    {
+        if (this.CurrentQuestion.getCorrectAnswerId() == answerId)
+        {
+            this.CurrentLevel++;
+            updateCurrentQuestion();
+        }
+        else
+        {
+            this.status = Status.END;
+            this.users.saveUser( this.getPlayer() );
+        }
+    }
+
+
+
+    public void setPlayer(User player)
+    {
+        this.player = player;
+        this.status = Status.QUESTION;
+    }
+
+
+
+    public User getPlayer()
+    {
+        return player;
     }
 
 
@@ -40,25 +80,24 @@ public class Game
 
 
 
-    public boolean checkAnswer(int answerId)
+    public Question getCurrentQuestion()
     {
-        boolean flag = (this.CurrentQuestion.getCorrectAnswerId() == answerId);
-
-        if (flag) {
-            this.CurrentLevel++;
-            updateCurrentQuestion();
-        }
-
-        return flag;
+        return CurrentQuestion;
     }
 
 
 
-    public void setCurrentLevel(int currentLevel)
+    public void setCurrentQuestion(Question newQuestion)
     {
-        CurrentLevel = currentLevel;
+        this.CurrentQuestion = newQuestion;
     }
 
+
+
+    public Status getStatus()
+    {
+        return status;
+    }
 
 
     private void updateCurrentQuestion()
@@ -68,42 +107,13 @@ public class Game
 
 
 
-    public Question getCurrentQuestion()
-    {
-        return CurrentQuestion;
-    }
-
-
-
-    public void setCurrentQuestion(Question currentQuestion)
-    {
-        CurrentQuestion = currentQuestion;
-    }
-
-
-
-    public IQuestionMapper getQuestions()
-    {
-        return questions;
-    }
-
-
-
-    public ILifelines getLifelines()
-    {
+    public ILifelines getLifelines() {
         return lifelines;
     }
 
-    public User getPlayer() {
-        return player;
+    public BitLevels getBitlevels() {
+        return bitlevels.getRepository();
     }
 
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setPlayer(User player) {
-        this.player = player;
-        this.status = Status.QUESTION;
-    }
+    public Users getUsers() { return this.users.getRepository(); }
 }
