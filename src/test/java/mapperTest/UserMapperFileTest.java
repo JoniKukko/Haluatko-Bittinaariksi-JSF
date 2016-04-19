@@ -47,8 +47,8 @@ public class UserMapperFileTest {
     {
         // Lisätään yks uus käyttäjä.
         // Vaihda näitä mielellään kun ajat testin niin tulee uusia rivejä eikä samoja.
-        this.userMapper.saveUser(new User("Minna", 100));
-        this.userMapper.saveUser(new User("Manu", 300));
+        this.userMapper.saveUser(new User("Minna", "100"));
+        this.userMapper.saveUser(new User("Manu", "300"));
 
         this.userMapper.saveUsers();
 

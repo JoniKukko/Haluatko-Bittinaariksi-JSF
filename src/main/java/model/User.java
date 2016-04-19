@@ -9,7 +9,7 @@ public class User
 {
     @Size(min=1, max=40)
     private String name;
-    private int score = 0;
+    private String score = "0";
 
 
 
@@ -26,7 +26,7 @@ public class User
 
 
 
-    public User(String name, int score)
+    public User(String name, String score)
     {
         this.name = name;
         this.score = score;
@@ -48,14 +48,14 @@ public class User
 
 
 
-    public int getScore()
+    public String getScore()
     {
         return score;
     }
 
 
 
-    public void setScore(int score)
+    public void setScore(String score)
     {
         this.score = score;
     }

@@ -48,6 +48,7 @@ public class Game
         {
             this.CurrentLevel++;
             updateCurrentQuestion();
+            this.player.setScore(this.bitlevels.getRepository().getBitsByLevel(this.CurrentLevel));
         }
         else
         {

@@ -55,7 +55,7 @@ public class UserMapperFile implements IUserMapper
             while ((strLine = br.readLine()) != null)   {
                 // split the line on your splitter(s)
                 String[] splitted = strLine.split("\\|"); // here - is used as the delimiter
-                userList.add(new User(splitted[0].toString(), Integer.parseInt(splitted[1].toString())));
+                userList.add(new User(splitted[0].toString(), splitted[1].toString()));
             }
 
             users = new Users(userList);
