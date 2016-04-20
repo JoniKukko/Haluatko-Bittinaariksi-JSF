@@ -1,3 +1,1 @@
-Heikki|14
-Kekki|0
-Konsta|1 kb
+Heikki|350 kb

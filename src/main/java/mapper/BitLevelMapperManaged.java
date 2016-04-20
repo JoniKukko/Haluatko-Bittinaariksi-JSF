@@ -13,6 +13,7 @@ public class BitLevelMapperManaged implements IBitLevelMapper {
     public BitLevelMapperManaged() {
         this.repository = new BitLevels();
 
+        this.repository.addBitLevel(new BitLevel(0, "0 b"));
         this.repository.addBitLevel(new BitLevel(1, "500 b"));
         this.repository.addBitLevel(new BitLevel(2, "1 kb"));
         this.repository.addBitLevel(new BitLevel(3, "2,5 kb"));

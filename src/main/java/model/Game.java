@@ -37,7 +37,7 @@ public class Game
     public void newGame()
     {
         this.status = Status.START;
-        this.CurrentLevel = 1;
+        this.CurrentLevel = 0;
     }
 
 
@@ -63,6 +63,7 @@ public class Game
     {
         this.player = player;
         this.status = Status.QUESTION;
+        this.player.setScore(this.bitlevels.getRepository().getBitsByLevel(0));
     }
 
 
@@ -103,7 +104,8 @@ public class Game
 
     private void updateCurrentQuestion()
     {
-        this.CurrentQuestion = this.questions.getRandomQuestionByLevel(this.CurrentLevel);
+        // haetaan seuraavan tason kysymys
+        this.CurrentQuestion = this.questions.getRandomQuestionByLevel(this.CurrentLevel + 1);
     }
 
 

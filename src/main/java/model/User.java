@@ -9,7 +9,7 @@ public class User
 {
     @Size(min=1, max=40)
     private String name;
-    private String score = "0";
+    private String score;
 
 
 

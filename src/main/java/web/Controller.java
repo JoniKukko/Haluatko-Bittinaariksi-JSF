@@ -13,10 +13,7 @@ import lifeline.Lifelines;
 import mapper.BitLevelMapperManaged;
 import mapper.QuestionMapperSQL;
 import mapper.UserMapperFile;
-import model.Answer;
-import model.Game;
-import model.Question;
-import model.User;
+import model.*;
 
 import javax.servlet.annotation.WebServlet;
 import java.io.File;
@@ -89,16 +86,17 @@ public class Controller extends UI
         // alustukset
         VerticalLayout layout = new VerticalLayout();
         layout.addComponent( new Label("Terve " + getEngine().getPlayer().getName() +", Vaaditko Bittinääriksiiiii?!?!?") );
-        layout.addComponent( new Label("Kysymys " + getEngine().getCurrentLevel() + "/15") );
+        layout.addComponent( new Label("Kysymys " + (getEngine().getCurrentLevel() + 1) + "/15") );
+
+        // kysymys
+        Question question = getEngine().getCurrentQuestion();
+        layout.addComponent( new Label(question.getQuestion()) );
 
         // jos lifeline on sanonut jotain
         if (lifelineResult != null)
             layout.addComponent( new Label("Oljenkorsi sanoo: " + lifelineResult) );
 
-
-        // kysymys ja vastaus vaihtoehdot
-        Question question = getEngine().getCurrentQuestion();
-        layout.addComponent( new Label(question.getQuestion()) );
+        // vastausvaihtoehdot
         for(final Answer answer : question.getAnswers())
         {
             Button button = new Button(answer.getAnswer());
@@ -125,6 +123,21 @@ public class Controller extends UI
                 }
             });
             layout.addComponent( button );
+        }
+
+        // Portaikko
+        layout.addComponent( new Label("Portaat: ") );
+        for (BitLevel level : getEngine().getBitlevels().getBitLevels())
+        {
+            if (level.getLevel() != 0)
+            {
+                if (getEngine().getCurrentLevel() == level.getLevel())
+                    layout.addComponent(new Label("! " + level.getLevel() + " : " + level.getBits()));
+                else if (getEngine().getCurrentLevel()+1 == level.getLevel())
+                    layout.addComponent(new Label("=> " + level.getLevel() + " : " + level.getBits()));
+                else
+                    layout.addComponent(new Label(level.getLevel() + " : " + level.getBits()));
+            }
         }
 
         return layout;
