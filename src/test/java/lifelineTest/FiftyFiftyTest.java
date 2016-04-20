@@ -64,13 +64,4 @@ public class FiftyFiftyTest
 
         assertEquals(true, correctAnswerFound);
     }
-
-
-
-    @Test
-    public void getResult() throws Exception
-    {
-        // fiftyfiftyllä vastauksen tulee olla null
-        assertEquals(null, this.lifeline.getResult());
-    }
 }

@@ -22,14 +22,12 @@ public class Game
 
     public Game(IQuestionMapper questions, IUserMapper users, IBitLevelMapper bitlevels, ILifelines lifelines)
     {
-        this.newGame();
-
         this.questions = questions;
         this.users = users;
         this.bitlevels = bitlevels;
         this.lifelines = lifelines;
 
-        this.updateCurrentQuestion();
+        this.newGame();
     }
 
 
@@ -38,6 +36,7 @@ public class Game
     {
         this.status = Status.START;
         this.CurrentLevel = 0;
+        this.updateCurrentQuestion();
     }
 
 

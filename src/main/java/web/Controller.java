@@ -157,7 +157,7 @@ public class Controller extends UI
         Button button = new Button("Pelataanko uudestaan?");
         button.addClickListener(new Button.ClickListener() {
             public void buttonClick(Button.ClickEvent event) {
-                getEngine().newGame();
+                Controller.engine = null;
                 init(request, null);
             }
         });

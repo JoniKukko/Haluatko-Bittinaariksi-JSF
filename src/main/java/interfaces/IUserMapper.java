@@ -9,6 +9,7 @@ import java.io.IOException;
 public interface IUserMapper
 {
     void saveUser(User user);
+
     Users loadUsers();
 
     Users getRepository();

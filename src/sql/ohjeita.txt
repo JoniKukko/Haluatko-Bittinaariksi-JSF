@@ -1,0 +1,79 @@
+Glassfish serverin pitää olla päällä ennen tätä!
+Avasin sql tiedoston ja tuli ilmoitus ettei data sourceja ole -> "Configure data sources"
+Plus merkistä uusi mysql.
+Host: localhost
+Database: HBJSF
+User: HBJSF
+Password: HBJSF
+Alhaalla näkyy ilmoitus "Download missing driver files" siitä klikkausta
+Paina OK. Tulee herjaa ettei yhteyttä ole jne. Tätä käytettiin vain tuon driverin helppoon asentamiseen kun en muuten sitä löytänyt.
+Käynnistä glassfish serveri uudestaan.
+Esim. IntelliJ:n oikea ylälaita play nappulasta ja restart.
+
+Kun serveri on käynnistynyt mene osoitteeseen
+http://localhost:4848/ (kestää aika kauan..)
+Vasemmalta listalta Resources -> JDBC ->JDBC Connection Pools.
+Paina DerbyPool
+Vaihda Datasource Classname (VANHA: org.apache.derby.jdbc.ClientDataSource)
+tähän: com.mysql.jdbc.jdbc2.optional.MysqlDataSource
+Laita Initial and Minimum Pool Size: 0 (VANHA: 8)
+Paina Save
+Välilehti Additional Properties
+Paina Add Property
+Name: URL
+Value: jdbc:mysql://localhost:3306/HBJSF
+Vaihda User-kenttään HBJSF
+Vaihda Password-kenttään HBJSF
+Valitse PortNumber, serverName, DatabaseName ja connectionAttributes ja Delete Properties
+Paina Save
+
+
+ILMEISESTI LADATTIIN ENSIN VÄÄRÄT AJURIT (tai ne meni jonnekkin väärään paikkaan)
+Joten tehdään se manuaalisesti
+https://dev.mysql.com/downloads/connector/j/
+Lataa alempi zippi
+Pura se kansioon
+Kansiosta jar tiedosto pitää siirtää glassfishin lib kansioon
+mulla se oli C:\Program Files (x86)\JetBrains\IntelliJ IDEA 2016.1.1\plugins\Glassfish\lib
+No hitto.. ei toimi.. Laitetaan myös projektin lib kansioon
+C:\Users\**\IdeaProjects\Haluatko-bittinaariksi-JSF\lib
+Ja sitten lisätään tuo äskönen projektin kirjastoihin
+IntelliJ:stä File -> Project Structure -> Dependencies -> + -> LIBRARY -> ja valitse tuo projektin lib kansiossa oleva
+No hitto, tiedosto myös tänne \glassfish4\glassfish\domains\domain1\lib
+Tuo oli mulla downloads kansiossa..
+Käynnistä glassfish uudelleen vaikka intellij:n kautta
+
+
+
+ASENNA MYSQL
+https://dev.mysql.com/downloads/installer/
+Vaikka se alempi siitä..
+Sitten kun se kysyy rootin salasanaa (laita joku minkä muistat ite)
+niin samassa näkymässä voi laittaa lisää käyttäjiä.
+Laita siihen uusi käyttäjä HBJSF ja salasanaksi HBJSF niin osuu nuo
+aikaisemmat asetukset kohilleen.
+
+
+*** ALLA OLEVIA TARVII VAIN PING TESTIIN MISTÄ EI TARVI VÄLITTÄÄ ***
+*** ELI HYPPÄÄ YLI ***
+
+Käynnistä komentorivi ja sinne
+"C:\Program Files\MySQL\MySQL Server 5.7\bin\mysql" -u root -p
+ja anna laittamasi rootin salasana
+sitten
+create database HBJSF;
+sitten mene tonne
+http://localhost:4848/ (kestää aika kauan..)
+Vasemmalta listalta Resources -> JDBC ->JDBC Connection Pools.
+Paina DerbyPool
+ja paina ping. PING SUCCESSFULL SAATANA
+
+*** HYPPÄÄN TÄNNE ***
+*** JATKA TÄSTÄ ***
+
+
+Käynnistä ny vielä kerran se glassfish uudestaan
+IntelliJ:stä hiiren oikealla sql kansiossa olevaa HBJSF.sql tiedostoa ja sieltä "run".
+valmis.
+
+Ja aja ny vielä src/test/mysql.java niin pitäis konsoliin tulla kysymykset..

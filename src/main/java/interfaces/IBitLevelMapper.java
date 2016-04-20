@@ -1,10 +1,10 @@
 package interfaces;
 
+
 import model.BitLevels;
 
 
-public interface IBitLevelMapper {
-
+public interface IBitLevelMapper
+{
     BitLevels getRepository();
-
 }

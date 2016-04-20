@@ -17,6 +17,18 @@ public class FiftyFifty implements ILifeline
 
 
 
+    public void useLifeline(Question question)
+    {
+        // alustukset
+        this.question = question;
+        this.result = null;
+
+        // käsittely
+        this.removeTwoWrongAnswers();
+    }
+
+
+
     private void removeTwoWrongAnswers()
     {
         // haetaan nykyiset vastaukset ja luodaan randomi
@@ -37,18 +49,6 @@ public class FiftyFifty implements ILifeline
         this.question.setAnswers(answers);
 
         this.result = "Poistin juuri kaksi varmasti väärää vastausta..";
-    }
-
-
-
-    public void useLifeline(Question question)
-    {
-        // alustukset
-        this.question = question;
-        this.result = null;
-
-        // käsittely
-        this.removeTwoWrongAnswers();
     }
 
 

@@ -3,6 +3,7 @@ package interfaces;
 
 import model.Question;
 
+
 public interface ILifeline
 {
     // käyttää lifelinen

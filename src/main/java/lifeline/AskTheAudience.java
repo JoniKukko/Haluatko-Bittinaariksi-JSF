@@ -17,6 +17,18 @@ public class AskTheAudience implements ILifeline
 
 
 
+    public void useLifeline(Question question)
+    {
+        // alustukset
+        this.question = question;
+        this.correctAnswerStartingPercentage = 30;
+
+        // käsittely
+        this.setResult();
+    }
+
+
+
     private void setResult()
     {
         Map<String, Integer> percentages = new HashMap<String, Integer>();
@@ -52,6 +64,7 @@ public class AskTheAudience implements ILifeline
 
 
 
+    // arvotaan jäljellä olevat prosentit
     private Map<String, Integer> fillPercentages(Map<String, Integer> percentages)
     {
         Random random = new Random();
@@ -68,18 +81,6 @@ public class AskTheAudience implements ILifeline
         }
 
         return percentages;
-    }
-
-
-
-    public void useLifeline(Question question)
-    {
-        // alustukset
-        this.question = question;
-        this.correctAnswerStartingPercentage = 30;
-
-        // käsittely
-        this.setResult();
     }
 
 
